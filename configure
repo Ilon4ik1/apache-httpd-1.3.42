@@ -22,6 +22,15 @@
 ##  Initially written by Ralf S. Engelschall <rse@apache.org>
 ##
 
+#   the default behavior of the `echo` builtin is not reliable; it
+#   behaves differently under `bash` and `dash`.  The latter is often
+#   used as the executable for `/bin/sh`.  The `printf` builtin provides
+#   a portable alternative.
+
+echo() {
+    printf -- "%s\n" "$@"
+}
+
 #   default input separator chars: <space><tab><cr>
 DIFS=' 	
 '
